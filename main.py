@@ -34,6 +34,7 @@ class EEGData(BaseModel):
 @app.post("/predict/", description="Predicts a neurological condition based on generated EEG data.")
 async def predict(data: EEGData):
     try:
+        print("Received metadata:", data.metadata)  # Add logging
         # Scale only metadata
         metadata_scaled = metadata_scaler.transform(np.array([data.metadata]))[0]
         # Reshape eeg_signal to match model input
