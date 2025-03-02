@@ -44,7 +44,14 @@
             const amplitude = parseFloat(document.getElementById('amplitude').value);
             const frequency = parseFloat(document.getElementById('frequency').value);
             const noise = parseFloat(document.getElementById('noise').value);
-            const metadata = document.getElementById('metadata').value.split(',').map(Number);
+            const metadataString = document.getElementById('metadata').value;
+            const metadata = metadataString.split(',').map(Number);
+
+            // Validate metadata
+            if (metadata.length !== 3 || metadata.some(isNaN)) {
+                document.getElementById('result').textContent = "Error: Invalid metadata. Please enter three comma-separated integers.";
+                return;
+            }
 
             const eegSignal = [];
             for (let i = 0; i < 1280; i++) {
@@ -60,7 +67,12 @@
                 },
                 body: JSON.stringify({ eeg_signal: eegSignal, metadata: metadata })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data && data.predicted_class) {
                     const predictedClass = data.predicted_class;
