@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+tensorflow
+scikit-learn
+pandas
+numpy
+joblib
+pickle-mixin
+python-multipart
+gunicorn  # Required for deployment on Render
