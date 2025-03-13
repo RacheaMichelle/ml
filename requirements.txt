@@ -9,3 +9,5 @@ joblib
 pickle-mixin
 python-multipart
 gunicorn  # Required for deployment on Render
+mne
+PyWavelets
