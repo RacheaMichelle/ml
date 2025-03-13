@@ -10,8 +10,6 @@ import pywt
 
 app = FastAPI()
 
-# Mount static files (for index.html)
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Load the trained model, label encoder, and scaler
 try:
