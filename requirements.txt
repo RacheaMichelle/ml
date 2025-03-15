@@ -1,13 +1,10 @@
-fastapi
-uvicorn
-streamlit
-tensorflow
-scikit-learn
-pandas
-numpy
-joblib
-pickle-mixin
-python-multipart
-gunicorn  # Required for deployment on Render
-mne
-PyWavelets
+fastapi==0.95.2
+uvicorn==0.22.0
+tensorflow==2.18.0  # Pin TensorFlow to a specific version
+scikit-learn==1.2.2
+pandas==2.0.2
+numpy==1.26.4  # Pin NumPy to a version compatible with TensorFlow 2.18.0
+joblib==1.2.0
+mne==1.4.2
+PyWavelets==1.4.1
+gunicorn==23.0.0
